@@ -55,73 +55,43 @@
 </head>
 <body>
     <div class="container">
-        <!-- Slide: Resultados Visuales -->
+        <!-- Slide: Variables y Encuesta -->
         <div class="slide active">
-            <h2>Visualización de Resultados</h2>
+            <h2>Variables y Estructura de la Encuesta ENSSEX</h2>
             <div class="content-box">
-                <h3>Comparación de Modelos Predictivos</h3>
-                <img src="./img/accuracy_models.png" alt="Precisión de Modelos" style="width:100%; border-radius: 10px; margin: 20px 0;">
-                <p>Se observa que <strong>Random Forest</strong> alcanza la mayor precisión predictiva (Accuracy) en comparación con los demás modelos implementados, lo que indica su robustez frente a relaciones complejas entre variables.</p>
-
-                <h3>Importancia de Variables (Random Forest)</h3>
-                <img src="./img/variable_importance.png" alt="Importancia de Variables" style="width:100%; border-radius: 10px; margin: 20px 0;">
-                <p>Las variables con mayor contribución al modelo son: <strong>sexo_con_amor, apps_citas, educación_sexual_escolar</strong> y <strong>estado_civil</strong>, confirmando su relevancia en la conducta preventiva.</p>
-
-                <h3>Curva ROC</h3>
-                <img src="./img/roc_curve.png" alt="Curva ROC" style="width:100%; border-radius: 10px; margin: 20px 0;">
-                <p>El modelo Random Forest presenta un <strong>AUC cercano a 0.85</strong>, lo cual indica una buena capacidad discriminativa para predecir el uso de métodos de barrera.</p>
-            </div>
-        </div>
-
-        <!-- Slide: Árbol de Decisión -->
-        <div class="slide">
-            <h2>Modelo: Árbol de Decisión</h2>
-            <div class="content-box">
-                <h3>Curva ROC y Métricas</h3>
-                <img src="./img/arbol-roc.png" alt="Curva ROC Árbol de Decisión" style="width: 80%; border-radius: 10px; margin: 20px 0;">
+                <h3>Tipo de Preguntas Realizadas</h3>
+                <p>La Encuesta Nacional de Salud Sexual y Reproductiva (ENSSEX) contiene preguntas de tipo:</p>
                 <ul>
-                    <li><strong>AUC:</strong> 0.72</li>
-                    <li><strong>Precisión:</strong> 0.68</li>
-                    <li><strong>Recall:</strong> 0.70</li>
-                    <li><strong>F1-Score:</strong> 0.69</li>
+                    <li><strong>Demográficas:</strong> edad, sexo, región, nivel educacional, situación conyugal.</li>
+                    <li><strong>Educación sexual:</strong> si recibió educación sexual escolar o familiar, contenido abordado.</li>
+                    <li><strong>Comportamiento sexual:</strong> uso de preservativos, frecuencia de relaciones, número de parejas.</li>
+                    <li><strong>Percepciones y actitudes:</strong> percepción del riesgo, razones para usar/no usar métodos de barrera.</li>
+                    <li><strong>Uso de tecnologías:</strong> apps de citas, consumo de pornografía o uso de juguetes sexuales.</li>
                 </ul>
-                <p>El árbol de decisión logra captar relaciones no lineales, pero presenta cierto sobreajuste al compararse con otros modelos.</p>
-            </div>
-        </div>
 
-        <!-- Slide: Random Forest -->
-        <div class="slide">
-            <h2>Modelo: Random Forest</h2>
-            <div class="content-box">
-                <h3>Curva ROC y Métricas</h3>
-                <img src="./img/random-roc.png" alt="Curva ROC Random Forest" style="width: 80%; border-radius: 10px; margin: 20px 0;">
+                <h3>Clasificación de Variables en el Estudio</h3>
+                <p>De las más de 900 variables originales, se seleccionaron 15 claves divididas en:</p>
                 <ul>
-                    <li><strong>AUC:</strong> 0.84</li>
-                    <li><strong>Precisión:</strong> 0.80</li>
-                    <li><strong>Recall:</strong> 0.79</li>
-                    <li><strong>F1-Score:</strong> 0.79</li>
+                    <li><strong>Edad:</strong> variable continua, categorizada para el modelo.</li>
+                    <li><strong>Sexo:</strong> masculino/femenino.</li>
+                    <li><strong>Educación:</strong> básica, media, técnica o superior.</li>
+                    <li><strong>Educación sexual escolar y familiar:</strong> respuestas tipo sí/no.</li>
+                    <li><strong>Estado civil:</strong> soltero/a, pareja estable, casado/a, otro.</li>
+                    <li><strong>Relaciones con amor:</strong> percepción subjetiva sobre sus relaciones.</li>
+                    <li><strong>Infidelidad:</strong> si ha sido infiel o su pareja lo ha sido.</li>
+                    <li><strong>Uso de preservativo:</strong> variable objetivo, categórica (Sí/No).</li>
+                    <li><strong>Apps de citas:</strong> uso actual o pasado.</li>
+                    <li><strong>Consumo de sustancias:</strong> alcohol y drogas previo al sexo.</li>
+                    <li><strong>Uso de juguetes sexuales:</strong> como factor de innovación o riesgo.</li>
                 </ul>
-                <p>Random Forest es el modelo con mejor desempeño general. Logra balancear precisión y recall, siendo el más robusto frente a variabilidad.</p>
+
+                <h3>Procesamiento de Datos</h3>
+                <p>Las variables categóricas fueron transformadas a factores y variables binarias para el análisis, utilizando técnicas de preprocesamiento como imputación de valores faltantes, codificación dummy y normalización donde fue necesario.</p>
             </div>
         </div>
 
-        <!-- Slide: Naive Bayes -->
-        <div class="slide">
-            <h2>Modelo: Naive Bayes</h2>
-            <div class="content-box">
-                <h3>Curva ROC y Métricas</h3>
-                <img src="./img/naive-roc.png" alt="Curva ROC Naive Bayes" style="width: 80%; border-radius: 10px; margin: 20px 0;">
-                <ul>
-                    <li><strong>AUC:</strong> 0.65</li>
-                    <li><strong>Precisión:</strong> 0.63</li>
-                    <li><strong>Recall:</strong> 0.64</li>
-                    <li><strong>F1-Score:</strong> 0.63</li>
-                </ul>
-                <p>Naive Bayes, aunque rápido y sencillo, no capta bien las interacciones complejas entre variables en este contexto.</p>
-            </div>
-        </div>
-
-        <!-- Slide: Comparación Final -->
+        <!-- Aquí continuarían los slides anteriores -->
+        <!-- Slide: Comparación Final (Ejemplo) -->
         <div class="slide">
             <h2>Comparación y Elección del Mejor Modelo</h2>
             <div class="content-box">
@@ -139,7 +109,7 @@
 
     <div class="navigation">
         <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
-        <span id="slideNumber">1</span> / <span id="totalSlides">6</span>
+        <span id="slideNumber">1</span> / <span id="totalSlides">2</span>
         <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Siguiente →</button>
     </div>
 
