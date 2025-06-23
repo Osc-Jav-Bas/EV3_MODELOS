@@ -3,96 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EV3: Métodos de Barrera</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Presentación EV3 - Informática Biomédica</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; background: #fefefe; color: #333; }
+    h1, h2, h3 { color: #006699; }
+    img { max-width: 100%; margin: 10px 0; border: 1px solid #ccc; padding: 4px; background: white; }
+    table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    footer { margin-top: 40px; font-size: 0.9em; color: #555; }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Factores asociados al uso de métodos de barrera en la última relación sexual</h1>
-    <p><strong>Integrantes:</strong> Oscar Silva y Bastián González</p>
-    <p><strong>Sección:</strong> BIY 7122-002D | <strong>Fecha:</strong> 18 de junio de 2025</p>
-  </header>
+  <h1>Factores asociados al uso de métodos de barrera en la última relación sexual</h1>
+  <p><strong>Integrantes:</strong> Oscar Silva y Bastián González</p>
+  <p><strong>Sección:</strong> BIY 7122-002D | <strong>Fecha:</strong> 18 de junio de 2025</p>
+  <hr>
 
-  <section>
-    <h2>1. Introducción</h2>
-    <p>La ENSSEX es una encuesta nacional del Ministerio de Salud. Este estudio analiza qué factores se asocian al uso de métodos de barrera (preservativos).</p>
-    <ul>
-      <li>Muestra: 20.392 personas, 923 variables</li>
-      <li>Herramientas: R, modelos logísticos, árbol de decisión, random forest</li>
-    </ul>
-  </section>
+  <h2>1. Introducción</h2>
+  <p>La Encuesta Nacional de Salud Sexual y Reproductiva (ENSSEX) es un instrumento estadístico a nivel nacional aplicado por el Ministerio de Salud de Chile que busca comprender conductas, conocimientos y experiencias en torno a la sexualidad de la población chilena. En el presente estudio, se abordó una de las preguntas fundamentales: <strong>¿Qué factores influyen en que una persona use métodos de barrera (preservativo) en su última relación sexual?</strong></p>
+  
+  <p>Desde la perspectiva de la Informática Biomédica, se utilizaron herramientas de análisis estadístico y modelado predictivo para interpretar los datos. Se trabajó con <strong>20.392 registros</strong> y se procesaron <strong>923 variables</strong> con el uso del software R Studio y librerías como <code>dplyr</code>, <code>ggplot2</code>, <code>caret</code> y <code>pROC</code>.</p>
 
-  <section>
-    <h2>2. Pregunta de Investigación</h2>
-    <p><strong>¿Qué factores se asocian al uso de preservativo en la última relación sexual?</strong></p>
-    <p><strong>Variable dependiente:</strong> p120_o1 → uso_preservativo (0 = No, 1 = Sí)</p>
-  </section>
+  <h2>2. Objetivo</h2>
+  <p>Analizar los factores asociados al uso de métodos de barrera en la última relación sexual de los participantes encuestados en ENSSEX, mediante un enfoque descriptivo, bivariado y predictivo.</p>
 
-  <section>
-    <h2>3. Variables independientes seleccionadas</h2>
-    <table>
-      <thead>
-        <tr><th>Código</th><th>Descripción</th><th>Tipo</th><th>Transformación</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>p5</td><td>Nivel educacional</td><td>Ordinal</td><td>Alta/Baja</td></tr>
-        <tr><td>i_3_p26</td><td>Alcohol en relaciones</td><td>Binaria</td><td>Sí/No</td></tr>
-        <tr><td>p109</td><td>Buscar sexo por apps</td><td>Binaria</td><td>Sí/No</td></tr>
-        <!-- Agrega las demás variables aquí -->
-      </tbody>
-    </table>
-  </section>
+  <h2>3. Pregunta de investigación</h2>
+  <p><strong>¿Qué factores se asocian al uso de preservativo en la última relación sexual?</strong></p>
+  <p>Esta pregunta busca establecer relaciones entre variables sociales, personales y educativas con el comportamiento preventivo (uso de condón) en contextos sexuales.</p>
 
-  <section>
-    <h2>4. Gráficos Clave</h2>
-    <figure>
-      <img src="uso%20preservativo%20por%20sexo.png" alt="Gráfico por sexo">
-      <figcaption>Uso de preservativo por sexo: mayor uso reportado por mujeres.</figcaption>
-    </figure>
-    <figure>
-      <img src="uso%20de%20preservativo%20segun%20situacion%20amorosa.png" alt="Gráfico por situación amorosa">
-      <figcaption>Relaciones estables muestran menor uso preventivo.</figcaption>
-    </figure>
-    <figure>
-      <img src="uso%20presservativo%20segun%20educacion%20escolar.png" alt="Educación sexual escolar">
-      <figcaption>Educación sexual escolar mejora uso de métodos de barrera.</figcaption>
-    </figure>
-  </section>
+  <h2>4. Variable dependiente</h2>
+  <ul>
+    <li><strong>Código ENSSEX:</strong> <code>p120_o1</code></li>
+    <li><strong>Nombre procesado:</strong> <code>uso_preservativo</code></li>
+    <li><strong>Transformación:</strong> 1 = Sí usó preservativo, 0 = No usó</li>
+  </ul>
 
-  <section>
-    <h2>5. Modelos Predictivos</h2>
-    <figure>
-      <img src="modelode%20arbol.png" alt="Árbol de decisión">
-      <figcaption>Modelo de árbol: educación, pareja y apps influyen en el uso.</figcaption>
-    </figure>
-    <figure>
-      <img src="modelo%20bosque.png" alt="Random forest">
-      <figcaption>Random Forest: variables más relevantes según IncMSE.</figcaption>
-    </figure>
-    <figure>
-      <img src="curvas%20roc.png" alt="Curva ROC">
-      <figcaption>Curva ROC: umbral óptimo 0.34, AUC 0.75.</figcaption>
-    </figure>
-  </section>
+  <img src="distribucion de uso de metodos de barrera.png" alt="Distribución del uso de métodos de barrera">
+  <p><em>Solo el 21,8% de los encuestados declaró haber usado preservativo. Este dato subraya la urgencia de estudiar los factores asociados.</em></p>
 
-  <section>
-    <h2>6. Conclusiones</h2>
-    <ul>
-      <li>Educación formal y sexual aumentan uso de preservativos.</li>
-      <li>Relaciones estables reducen el uso por confianza.</li>
-      <li>Apps, alcohol, poppers: factores de riesgo actuales.</li>
-    </ul>
-  </section>
+  <h2>5. Variables independientes seleccionadas</h2>
+  <p>Se seleccionaron 15 variables basadas en literatura, contexto sociocultural y relevancia biomédica:</p>
+  <table>
+    <tr><th>Código</th><th>Descripción</th><th>Tipo</th><th>Transformación</th></tr>
+    <tr><td>p5</td><td>Nivel educacional</td><td>Ordinal</td><td>Alta (1) / Baja (0)</td></tr>
+    <tr><td>p1</td><td>Sexo</td><td>Categórica</td><td>Masculino/Femenino</td></tr>
+    <tr><td>p7</td><td>Estado civil</td><td>Categórica</td><td>En relación (1) / Soltero (0)</td></tr>
+    <tr><td>p38</td><td>Educación sexual escolar</td><td>Ordinal</td><td>Buena (1) / Deficiente (0)</td></tr>
+    <tr><td>p34</td><td>Educación sexual familiar</td><td>Ordinal</td><td>Recibida (1) / No (0)</td></tr>
+    <tr><td>i_3_p26</td><td>Alcohol en relaciones sexuales</td><td>Binaria</td><td>Sí (1) / No (0)</td></tr>
+    <tr><td>p109</td><td>Buscar sexo en apps</td><td>Binaria</td><td>Sí (1) / No (0)</td></tr>
+  </table>
 
-  <section>
-    <h2>7. Recomendaciones</h2>
-    <ul>
-      <li>Fomentar educación sexual integral, sin estigmas.</li>
-      <li>Campanês para jóvenes, usuarios de apps, relaciones estables.</li>
-      <li>Integrar tecnologías sexuales en estrategias de salud.</li>
-    </ul>
-  </section>
+  <h2>6. Análisis descriptivo y bivariado</h2>
+  <h3>Uso de preservativo por sexo</h3>
+  <img src="uso preservativo por sexo.png" alt="Uso por sexo">
+  <p><em>Las mujeres reportan mayor uso de preservativo que los hombres, posiblemente por mayor conciencia preventiva.</em></p>
 
+  <h3>Situación amorosa y uso de preservativo</h3>
+  <img src="uso de preservativo segun situacion amorosa.png" alt="Uso por estado civil">
+  <p><em>Las personas en pareja estable tienden a usar menos preservativo, confiando en la estabilidad o exclusividad.</em></p>
+
+  <h3>Educación sexual escolar y uso</h3>
+  <img src="uso presservativo segun educacion escolar.png" alt="Educación sexual y preservativo">
+  <p><em>Quienes recibieron educación sexual formal usan más métodos de barrera, validando la importancia de educar en la prevención.</em></p>
+
+  <h2>7. Modelos predictivos</h2>
+  <h3>Árbol de decisión</h3>
+  <img src="modelode arbol.png" alt="Arbol de decision">
+  <p><em>Este modelo visualiza cómo la combinación de edad, apps, pareja y educación predice el uso de preservativo.</em></p>
+
+  <h3>Random Forest - Importancia de variables</h3>
+  <img src="modelo bosque.png" alt="Random Forest">
+  <p><em>Las variables con mayor peso predictivo fueron educación familiar, apps, alcohol y uso de juguetes sexuales.</em></p>
+
+  <h3>Curva ROC y métricas</h3>
+  <img src="curvas roc.png" alt="Curva ROC">
+  <img src="acurracy etc.png" alt="Métricas del modelo">
+  <p><em>El modelo logístico tuvo un AUC de 0.75 con alta especificidad (96%) pero sensibilidad baja, indicando muchos falsos negativos.</em></p>
+
+  <h2>8. Conclusiones</h2>
+  <ul>
+    <li>El uso de preservativo aumenta con mayor educación formal y sexual.</li>
+    <li>El consumo de alcohol y apps disminuye el uso preventivo.</li>
+    <li>Las relaciones estables tienden a reducir el uso por confianza percibida.</li>
+    <li>Las nuevas tecnologías sexuales (apps, juguetes) deben integrarse en la prevención.</li>
+  </ul>
+
+  <h2>9. Recomendaciones</h2>
+  <ul>
+    <li>Implementar educación sexual integral desde edades tempranas.</li>
+    <li>Diseñar campañas dirigidas a jóvenes y población digitalmente activa.</li>
+    <li>Incluir enfoque biomédico, tecnológico y social en las políticas públicas.</li>
+    <li>Explorar la relación entre placer sexual, apps y prevención como eje de investigación futura.</li>
+  </ul>
+
+  <footer>
+    <p>Presentación desarrollada por estudiantes de Informática Biomédica. Todos los datos provienen del estudio ENSSEX.</p>
+    <p>Repositorio original: <a href="https://osc-jav-bas.github.io/EV3_MDD/">https://osc-jav-bas.github.io/EV3_MDD/</a></p>
   </footer>
 </body>
 </html>
