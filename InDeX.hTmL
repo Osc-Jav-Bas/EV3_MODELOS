@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación ENSSEX</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .slide {
+            display: none;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .slide.active {
+            display: block;
+        }
+        .content-box {
+            background: #fefefe;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .navigation {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .nav-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .nav-btn:disabled {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Slide: Resultados Visuales -->
+        <div class="slide active">
+            <h2>Visualización de Resultados</h2>
+            <div class="content-box">
+                <h3>Comparación de Modelos Predictivos</h3>
+                <img src="./img/accuracy_models.png" alt="Precisión de Modelos" style="width:100%; border-radius: 10px; margin: 20px 0;">
+                <p>Se observa que <strong>Random Forest</strong> alcanza la mayor precisión predictiva (Accuracy) en comparación con los demás modelos implementados, lo que indica su robustez frente a relaciones complejas entre variables.</p>
+
+                <h3>Importancia de Variables (Random Forest)</h3>
+                <img src="./img/variable_importance.png" alt="Importancia de Variables" style="width:100%; border-radius: 10px; margin: 20px 0;">
+                <p>Las variables con mayor contribución al modelo son: <strong>sexo_con_amor, apps_citas, educación_sexual_escolar</strong> y <strong>estado_civil</strong>, confirmando su relevancia en la conducta preventiva.</p>
+
+                <h3>Curva ROC</h3>
+                <img src="./img/roc_curve.png" alt="Curva ROC" style="width:100%; border-radius: 10px; margin: 20px 0;">
+                <p>El modelo Random Forest presenta un <strong>AUC cercano a 0.85</strong>, lo cual indica una buena capacidad discriminativa para predecir el uso de métodos de barrera.</p>
+            </div>
+        </div>
+
+        <!-- Slide: Árbol de Decisión -->
+        <div class="slide">
+            <h2>Modelo: Árbol de Decisión</h2>
+            <div class="content-box">
+                <h3>Curva ROC y Métricas</h3>
+                <img src="./img/arbol-roc.png" alt="Curva ROC Árbol de Decisión" style="width: 80%; border-radius: 10px; margin: 20px 0;">
+                <ul>
+                    <li><strong>AUC:</strong> 0.72</li>
+                    <li><strong>Precisión:</strong> 0.68</li>
+                    <li><strong>Recall:</strong> 0.70</li>
+                    <li><strong>F1-Score:</strong> 0.69</li>
+                </ul>
+                <p>El árbol de decisión logra captar relaciones no lineales, pero presenta cierto sobreajuste al compararse con otros modelos.</p>
+            </div>
+        </div>
+
+        <!-- Slide: Random Forest -->
+        <div class="slide">
+            <h2>Modelo: Random Forest</h2>
+            <div class="content-box">
+                <h3>Curva ROC y Métricas</h3>
+                <img src="./img/random-roc.png" alt="Curva ROC Random Forest" style="width: 80%; border-radius: 10px; margin: 20px 0;">
+                <ul>
+                    <li><strong>AUC:</strong> 0.84</li>
+                    <li><strong>Precisión:</strong> 0.80</li>
+                    <li><strong>Recall:</strong> 0.79</li>
+                    <li><strong>F1-Score:</strong> 0.79</li>
+                </ul>
+                <p>Random Forest es el modelo con mejor desempeño general. Logra balancear precisión y recall, siendo el más robusto frente a variabilidad.</p>
+            </div>
+        </div>
+
+        <!-- Slide: Naive Bayes -->
+        <div class="slide">
+            <h2>Modelo: Naive Bayes</h2>
+            <div class="content-box">
+                <h3>Curva ROC y Métricas</h3>
+                <img src="./img/naive-roc.png" alt="Curva ROC Naive Bayes" style="width: 80%; border-radius: 10px; margin: 20px 0;">
+                <ul>
+                    <li><strong>AUC:</strong> 0.65</li>
+                    <li><strong>Precisión:</strong> 0.63</li>
+                    <li><strong>Recall:</strong> 0.64</li>
+                    <li><strong>F1-Score:</strong> 0.63</li>
+                </ul>
+                <p>Naive Bayes, aunque rápido y sencillo, no capta bien las interacciones complejas entre variables en este contexto.</p>
+            </div>
+        </div>
+
+        <!-- Slide: Comparación Final -->
+        <div class="slide">
+            <h2>Comparación y Elección del Mejor Modelo</h2>
+            <div class="content-box">
+                <h3>Desempeño Comparado</h3>
+                <ul>
+                    <li><strong>Random Forest:</strong> Mejor AUC y F1-Score</li>
+                    <li><strong>Árbol de Decisión:</strong> Buen interpretabilidad, pero menor precisión</li>
+                    <li><strong>Naive Bayes:</strong> Rápido, pero menos efectivo en este caso</li>
+                </ul>
+                <h3>Modelo Recomendado</h3>
+                <p><strong>Random Forest</strong> es el modelo más equilibrado y preciso para predecir el uso de métodos de barrera en la última relación sexual, dadas sus métricas superiores y capacidad de generalización.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
+        <span id="slideNumber">1</span> / <span id="totalSlides">6</span>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Siguiente →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('slideNumber').textContent = currentSlide + 1;
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            if (direction === 1 && currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            } else if (direction === -1 && currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight') changeSlide(1);
+            if (event.key === 'ArrowLeft') changeSlide(-1);
+        });
+    </script>
+</body>
+</html>
